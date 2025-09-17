@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Request Account & Data Deletion — ByteForged Studios</title>
+  <meta name="description" content="Request that your account and any associated data used by our apps be deleted." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#7c3aed;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    body{background:linear-gradient(180deg,#071028 0%, #071223 60%);color:#e6eef8;display:flex;align-items:center;justify-content:center;padding:32px}
+    .container{width:100%;max-width:900px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h1{margin:0 0 6px;font-size:20px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
+    form{background:var(--card);padding:16px;border-radius:10px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#cfe6ff}
+    input[type=text],input[type=email],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit;font-size:14px}
+    textarea{min-height:120px;resize:vertical}
+    .meta{background:transparent;padding:12px;border-radius:10px;border:1px dashed rgba(255,255,255,0.03);color:var(--muted);font-size:13px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#5b21b6);color:white;border:none;cursor:pointer;font-weight:600}
+    .muted{color:var(--muted);font-size:13px}
+    .notice{font-size:13px;color:#bfdcff;background:rgba(124,58,237,0.06);padding:12px;border-radius:8px}
+    .footer{margin-top:12px;font-size:13px;color:var(--muted)}
+    @media (max-width:880px){.grid{grid-template-columns:1fr;}.container{padding:18px}}
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <header>
+      <h1>Request account & data deletion</h1>
+      <p class="lead">Use this page to request deletion of your account and any data associated with it for apps by <strong>ByteForged Studios</strong>.</p>
+    </header>
+
+    <section class="grid" aria-label="Deletion request">
+      <form id="deletionForm" onsubmit="return sendDeletionRequest(event)">
+        <div style="display:flex;gap:12px;flex-direction:column">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Your full name" required />
+
+          <label for="email">Email address (used to register)</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="app">App</label>
+          <select id="app" name="app" required>
+            <option value="Parenting Helper">Parenting Helper</option>
+            <option value="Micro Habit Tracker">Micro Habit Tracker</option>
+            <option value="Other">Other / Not sure</option>
+          </select>
+
+          <label for="device">Device ID / Google Play account (optional)</label>
+          <input id="device" name="device" type="text" placeholder="Device ID, Google account email, or Play account ID" />
+
+          <label for="reason">Reason (optional)</label>
+          <textarea id="reason" name="reason" placeholder="Any additional info that helps identify your account"></textarea>
+
+          <label style="display:flex;align-items:center;gap:10px;margin-top:6px"><input id="confirm" type="checkbox" required /> <span class="muted">I confirm I am requesting deletion of my own account or am authorised to make this request.</span></label>
+
+          <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+            <button class="btn" type="submit">Request deletion</button>
+            <button type="button" onclick="copyTemplate()" style="background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:10px;color:inherit">Copy email template</button>
+          </div>
+
+          <p class="footer">If your email client doesn't open automatically, please copy the template (right) and send it to <a href="mailto:ByteForgedStudios@gmail.com">ByteForgedStudios@gmail.com</a>.</p>
+        </div>
+      </form>
+
+      <aside>
+        <div class="meta">
+          <h3 style="margin-top:0">What happens next</h3>
+          <p class="muted">We will verify your identity and the account details you provide. For security we might request additional information (for example a screenshot showing the account email in-app, or the device ID). Deletion requests are processed within <strong>30 days</strong> unless otherwise required by local law.</p>
+
+          <div style="height:12px"></div>
+          <div class="notice">
+            <strong>Privacy note:</strong> We will only use the information you submit to identify and delete the account and associated data. We will not share your personal details with third parties except where required by law.
+          </div>
+
+          <h4 style="margin-top:12px;margin-bottom:6px">Email template (editable)</h4>
+          <pre id="template" style="white-space:pre-wrap;font-size:13px;color:#e1f0ff;background:transparent;border-radius:6px;">Subject: Account & Data Deletion Request — [App name]
+
+Hello ByteForged Studios team,
+
+Please delete my account and all associated data for the app: [App name].
+
+Full name: [your full name]
+Email used to sign up: [your email]
+Device / Play account ID (if known): [device or account ID]
+Reason (optional): [optional]
+
+I confirm I am the account owner or authorised to make this request.
+
+Thanks,
+[your name]
+</pre>
+
+          <p class="muted">You can paste the template into your email client or use the form to open your email app prefilled.</p>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0" />
+          <p class="muted"><strong>Contact:</strong> <a href="mailto:ByteForgedStudios@gmail.com">ByteForgedStudios@gmail.com</a></p>
+        </div>
+      </aside>
+    </section>
+
+    <footer style="margin-top:14px;color:var(--muted);font-size:13px">
+      <p>Use this page as the link in Google Play Console's Data safety &amp; deletion section. For example: <code>https://byteforgedstudios.github.io/account-deletion.html</code></p>
+    </footer>
+  </main>
+
+  <script>
+    function sendDeletionRequest(e){
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const app = document.getElementById('app').value;
+      const device = document.getElementById('device').value.trim();
+      const reason = document.getElementById('reason').value.trim();
+      const confirm = document.getElementById('confirm').checked;
+      if(!name||!email||!confirm){
+        alert('Please complete the required fields.');
+        return false;
+      }
+
+      const subject = encodeURIComponent('Account & Data Deletion Request — ' + app);
+      let body = '';
+      body += 'Hello ByteForged Studios team,%0D%0A%0D%0A';
+      body += 'Please delete my account and all associated data for the app: ' + encodeURIComponent(app) + '.%0D%0A%0D%0A';
+      body += 'Full name: ' + encodeURIComponent(name) + '%0D%0A';
+      body += 'Email used to sign up: ' + encodeURIComponent(email) + '%0D%0A';
+      if(device) body += 'Device / Play account ID: ' + encodeURIComponent(device) + '%0D%0A';
+      if(reason) body += '%0D%0AReason: ' + encodeURIComponent(reason) + '%0D%0A';
+      body += '%0D%0AI confirm I am the account owner or authorised to make this request.%0D%0A%0D%0AThanks,%0D%0A' + encodeURIComponent(name) + '%0D%0A';
+
+      const mailto = 'mailto:ByteForgedStudios@gmail.com?subject=' + subject + '&body=' + body;
+
+      // Try to open user's email client
+      window.location.href = mailto;
+      return false;
+    }
+
+    function copyTemplate(){
+      const tpl = document.getElementById('template').innerText;
+      navigator.clipboard?.writeText(tpl).then(()=>{
+        alert('Email template copied to clipboard.');
+      },()=>{
+        alert('Could not copy automatically — please select and copy the template manually.');
+      });
+    }
+  </script>
+</body>
+</html>
