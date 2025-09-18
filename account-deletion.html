@@ -43,7 +43,7 @@
       };
 
       try {
-        const res = await fetch("https://wdqobnfnukyjxlliokbk.functions.supabase.co/deletion-request", {
+        const res = await fetch("https://wdqobnfnukyjxlliokbk.supabase.co/functions/v1/deletion-request", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
