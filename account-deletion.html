@@ -45,7 +45,7 @@
       try {
         const res = await fetch("https://wdqobnfnukyjxlliokbk.supabase.co/functions/v1/deletion-request", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkcW9ibmZudWt5anhsbGlva2JrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MTYwNzYsImV4cCI6MjA3Mjk5MjA3Nn0.YOHYCkkZnk-e_rowiggpHKSbTsnNF2WCJIAswmwQOPY" },
           body: JSON.stringify(payload)
         });
 
